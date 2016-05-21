@@ -8,7 +8,7 @@ module Guard
       attr_reader :failed_paths
 
       def initialize(filename)
-        lines = File.readlines(filename)
+        lines = File.readlines(filename) rescue nil
         if lines.empty? || lines.first.empty?
           dump = lines.inspect
           fail InvalidData, "Invalid results in: #{filename},"\
