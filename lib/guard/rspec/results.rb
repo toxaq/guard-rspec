@@ -9,7 +9,11 @@ module Guard
 
       def initialize(filename)
         lines = File.readlines(filename) rescue nil
-        if lines.nil? || lines.empty? || lines.first.empty?
+        if lines.nil?
+          @summary = 'No results file found'
+          return
+        end
+        if lines.empty? || lines.first.empty?
           dump = lines.inspect
           fail InvalidData, "Invalid results in: #{filename},"\
             " lines:\n#{dump}\n"
