@@ -26,6 +26,7 @@ module Guard
       def _run
         _without_bundler_env do
           exit_code = _really_run
+          STDERR.puts exit_code.inspect
           unless [0, Command::FAILURE_EXIT_CODE].include?(exit_code)
             fail Failure, "Failed: #{command.inspect} (exit code: #{exit_code})"
           end
