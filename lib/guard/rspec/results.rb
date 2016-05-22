@@ -17,6 +17,7 @@ module Guard
         lines = File.readlines(filename) rescue nil
         if lines.nil?
           @summary = 'No results file found'
+          @failed_paths = []
           return
         end
         if lines.empty? || lines.first.empty?
